@@ -7,7 +7,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     width: 20rem;
-    height: 38rem;
+    height: 50rem;
     
 }
 
@@ -22,3 +22,22 @@
 .division {
     margin-top: 9rem;
 }
+
+.grid {
+    margin-top: 12rem;
+    /* display: grid;
+    grid-template-columns: repeat(4,1fr); */
+    gap: 2rem;
+}
+
+.listaclientes {
+   
+   
+    margin-top: 2rem;
+    padding: 2rem;
+    background-color:#465f91;
+    border-radius: 2rem;
+    align-items: center;
+  
+ }
+ 

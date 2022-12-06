@@ -1,13 +1,18 @@
 
 import './estilos/App.css';
-import Clientes from './paginas/clientes/Clientes';
-
+import Menu from './componentes/Menu';
+import {BrowserRouter as  Router } from "react-router-dom";
 
 function App() {
-  return (
+  return ( 
+    
     <div className="App">
-       <Clientes/>
+    <Router>
+       <Menu/>       
+    </Router>
     </div>
+           
+
   );
 }
 

@@ -3,7 +3,7 @@ import { Button, Form } from "react-bootstrap";
 import React, { useState } from "react";
 import app from "../../app.json";
 
-const Clientes = () => {
+const ClientesCrear = () => {
   const {APIHOST}= app;
   const [nombres, setNombres ] = useState(""); 
   const [apellidos, setApellidos] = useState("");
@@ -13,24 +13,10 @@ const Clientes = () => {
   const [fotocopia, setFotocopia] = useState("");
   const [letra, setLetra] = useState("");
 
-  // const [cliente, setCliente] = useState({
-  //   nombres: "",
-  //   apellidos: "",
-  //   correo: "",
-  //   cedula: "",
-  //   direccion: "",
-  //   fotocopia: "",
-  //   letra: "",
-  // });
-
-  // function handleInputChange(e) {
-  //   setCliente({
-  //     [e.target.name]: e.target.value,
-  //   });
-  // }
-  console.log(nombres);
   
   const GuardarDatos = (event) => {
+    event.preventDefault()
+
     const usuarioActual = {
        
       nombres: nombres,
@@ -46,10 +32,10 @@ const Clientes = () => {
     .post(`${APIHOST}/clientes `,usuarioActual)
     .then((res) => { 
      const usuario = res.data;
-       //window.location.replace('/VerAgricultor');    
+       window.location.replace('/clientes');    
       console.log(usuario);   
     });
-
+    
   } 
   return (
     <div className="contenido-registro">
@@ -122,4 +108,4 @@ const Clientes = () => {
   );
 };
 
-export default Clientes;
+export default ClientesCrear;
