@@ -6,9 +6,11 @@ import CrearClientes from '../paginas/clientes/ClientesCrear'
 import ListarClientes from '../paginas/clientes/ListarClientes';
 import EditarCliente from '../paginas/clientes/EditarClientes';
 import Confirmacion from "../componentes/Confirmacion";
-import EliminarCliente from "../paginas/clientes/EliminarCliente"
+import EliminarCliente from "../paginas/clientes/EliminarCliente";
+import ListarPrestamos from "../paginas/prestamos/ListarPrestamos";
+import PrestamosCrear from '../paginas/prestamos/PrestamosCrear';
 import Nofound from '../paginas/Nofound'
-import { PRIVATE1,PRIVATE2,PRIVATE3,PRIVATE4,PRIVATE5} from './Path';
+import { PRIVATE1,PRIVATE2,PRIVATE3,PRIVATE4,PRIVATE5,PRIVATE6,PRIVATE7,PRIVATE8} from './Path';
 import Layout from './Layout';
 
     
@@ -23,7 +25,9 @@ const Menu = () => {
            <Route path={PRIVATE3} element={<EditarCliente />}></Route>
            <Route path={PRIVATE4} element={<Confirmacion/>}></Route> 
            <Route path={PRIVATE5} element={<EliminarCliente />}></Route>
-           
+           <Route path={PRIVATE6} element={<ListarPrestamos />}></Route>
+           <Route path={PRIVATE7} element={<PrestamosCrear />}></Route>
+           <Route path={PRIVATE8} element={<ListarPrestamos />}></Route>   
            <Route path="*" element={<Nofound />}></Route>
           
       </Routes>

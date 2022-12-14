@@ -21,7 +21,7 @@ const ListarClientes = () => {
   return (
     <Container>
     <div className='grid'>
-        <h1>Lista </h1>
+        <h1>Clientes</h1>
         <Link to={"/clientesCrear"}>Adicionar</Link>
         {listaclientes && listaclientes.map((cliente,i) => { 
           return(
@@ -31,11 +31,11 @@ const ListarClientes = () => {
               <p><strong>Correo:</strong> {cliente.correo}</p>
               <p><strong>Cedula:</strong> {cliente.cedula}</p>
               <p><strong>Direccion:</strong> {cliente.direccion}</p>
-              <p><strong>Fotocopia:</strong> {cliente.fotocopia}</p>
-              <p><strong>Letra:</strong> {cliente.letra}</p>
-
+              
               <Link to={"/modificar/" + cliente._id}>Modificar  </Link>
               <Link to={"/confirmacion/" + cliente._id}>Eliminar</Link>
+              <Link to={"/ListaPrestamos/" + cliente._id}>Prestamos</Link>
+              
             </div> 
             );          
          }

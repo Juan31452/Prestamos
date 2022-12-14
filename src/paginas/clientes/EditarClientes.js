@@ -11,8 +11,6 @@ const EditarClientes = () => {
   const [correo, setCorreo] = useState("");
   const [cedula, setCedula ] = useState(""); 
   const [direccion, setDireccion] = useState("");
-  const [fotocopia, setFotocopia] = useState("");
-  const [letra, setLetra] = useState("");
   const {APIHOST}= app;
 
   let { id } = useParams();
@@ -28,8 +26,6 @@ const EditarClientes = () => {
         setCorreo(res.data.correo);
         setCedula(res.data.cedula);
         setDireccion(res.data.direccion);
-        setFotocopia(res.data.fotocopia);
-        setLetra(res.data.letra);
         console.log(nombres); 
                    
       });
@@ -56,8 +52,6 @@ const EditarClientes = () => {
       correo: correo,
       cedula: cedula,
       direccion: direccion,
-      fotocopia: fotocopia,
-      letra: letra,
     };
     
     let url = `${APIHOST}/clientes/` + id;
@@ -114,26 +108,9 @@ const EditarClientes = () => {
           name="direccion"
           value={direccion} onChange={ev => setDireccion(ev.target.value)}          />
       </div>
-      <div className="division-uno">
-        <label htmlFor="lafotocopia">Fotocopia:</label>
-        <input
-          type="text"
-          name="fotocopia"
-          value={fotocopia} onChange={ev => setFotocopia(ev.target.value)}
-          
-        />
-      </div>
-      <div className="division-uno">
-        <label htmlFor="laletra">Letra:</label>
-        <input
-          type="text"
-          name="letra"
-          value={letra} onChange={ev => setLetra(ev.target.value)}
-        />
-      </div>
-        <Button type="submit" className="btn btn-primary">
-          Guardar
-        </Button>
+      <Button type="submit" className="btn btn-primary">
+        Guardar
+      </Button>
       
     </Form>
 

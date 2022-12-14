@@ -20,6 +20,11 @@ const Layout = () => {
               Clientes
             </Link>
           </li>
+          <li>
+            <Link to="/prestamos" className="nav-link">
+              Prestamos
+            </Link>
+          </li>
           </ul>
         <DropdownButton id="dropdown-basic-button" title="Usuario">
         <Dropdown.Item href="/inicio">Inicio Sesion</Dropdown.Item>
