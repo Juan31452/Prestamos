@@ -6,3 +6,6 @@ export const PRIVATE5 = '/eliminarCliente/:id';
 export const PRIVATE6 = '/ListaPrestamos/:id';
 export const PRIVATE7 = '/CrearPrestamos';
 export const PRIVATE8 = '/prestamos';
+export const PRIVATE9 = '/modificarp/:id';
+export const PRIVATE10 = '/eliminarPrestamo/:id';
+export const PRIVATE11 = '/confirmacionPrestamo/:id';

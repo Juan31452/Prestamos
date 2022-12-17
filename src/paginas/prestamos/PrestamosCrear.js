@@ -105,10 +105,10 @@ const PrestamosCrear = () => {
            Elije un cliente:
            {' '}  
            <select name = "cliente" value={cliente} onChange={ev => setCliente(ev.target.value)}>
-           <option value=" " >Seleccione un Cliente...</option>             
+              <option value=" " >Seleccione un Cliente...</option>             
               {listaclientes && listaclientes.map((elcliente) => (
                                 
-                <option key={elcliente._id} value={elcliente._id}>{elcliente.nombres}</option>  
+                <option key={elcliente._id} value={elcliente.nombres}>{elcliente.nombres}</option>  
                                          
                 
               ))} 

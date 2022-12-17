@@ -32,7 +32,11 @@ const ListarPrestamos = () => {
             <p><strong>Letra:</strong> {prestamo.letra}</p>
             <p><strong>Fotocopia:</strong> {prestamo.fotocopia}</p>
             <p><strong>Pagado:</strong> {prestamo.pagado}</p>
-            
+
+            <Link to={"/modificarp/" + prestamo._id}>Modificar  </Link>
+            <Link to={"/confirmacionPrestamo/" + prestamo._id}>Eliminar</Link>
+              
+        
             
           </div> 
           );          
