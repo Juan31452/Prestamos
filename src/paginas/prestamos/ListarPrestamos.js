@@ -2,9 +2,12 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import app from "../../app.json";
+import Modal from '../../componentes/Modal';
+import CuotasCrear from '../cuotas/CuotasCrear';
 
 const ListarPrestamos = () => {
     let { id } = useParams();
+    const [mostrar, setMostrar] = useState(false);
     const [listaprestamos, setListaprestamos ] = useState("");
     const {APIHOST}= app;
   
@@ -35,9 +38,14 @@ const ListarPrestamos = () => {
 
             <Link to={"/modificarp/" + prestamo._id}>Modificar  </Link>
             <Link to={"/confirmacionPrestamo/" + prestamo._id}>Eliminar</Link>
+
+            <button className='btn btn-success m-2' onClick={() => setMostrar(true)}>Cuota</button>
+            <Modal isOpen={mostrar} onClose={() => setMostrar(false)}>
+              <CuotasCrear
+              prestamoActual={prestamo._id}
+              />              
+            </Modal>
               
-        
-            
           </div> 
           );          
        }

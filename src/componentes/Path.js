@@ -9,3 +9,4 @@ export const PRIVATE8 = '/prestamos';
 export const PRIVATE9 = '/modificarp/:id';
 export const PRIVATE10 = '/eliminarPrestamo/:id';
 export const PRIVATE11 = '/confirmacionPrestamo/:id';
+export const PRIVATE12 = '/cuotasCrear/:id';
