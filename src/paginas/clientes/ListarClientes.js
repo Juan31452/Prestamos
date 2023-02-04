@@ -19,8 +19,7 @@ const ListarClientes = () => {
    
   
   return (
-    <Container>
-    <div className='grid'>
+     <div>
         <h1>Clientes</h1>
         <Link to={"/clientesCrear"}>Adicionar</Link>
         {listaclientes && listaclientes.map((cliente,i) => { 
@@ -41,7 +40,7 @@ const ListarClientes = () => {
          }
         )}         
      </div>
-    </Container>
+    
   )
 }
 

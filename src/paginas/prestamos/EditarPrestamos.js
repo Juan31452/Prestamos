@@ -11,7 +11,7 @@ const EditarPrestamos = () => {
   const [interes, setInteres] = useState("");
   const [cuota, setCuota] = useState("");
   const [cliente, setCliente] = useState("");
-  const [pagado, setPagado] = useState("");
+  const [debe, setDebe] = useState("");
   const [letra, setLetra] = useState("");
   const [fotocopia, setFotocopia] = useState("");
   const [listaclientes, setListaclientes] = useState("");
@@ -30,7 +30,7 @@ const EditarPrestamos = () => {
       setInteres(res.data.interes);
       setCuota(res.data.cuota);
       setCliente(res.data.cliente);
-      setPagado(res.data.pagado);
+      setDebe(res.data.debe);
       setLetra(res.data.letra);
       setFotocopia(res.data.fotocopia);
       console.log(fecha);
@@ -59,7 +59,7 @@ const EditarPrestamos = () => {
       cliente: cliente,
       letra: letra,
       fotocopia: fotocopia,
-      pagado: pagado,
+      debe: debe,
     };
 
     let url = `${APIHOST}/prestamos/` + id;
@@ -75,7 +75,7 @@ const EditarPrestamos = () => {
     let micuota = (valor_prestamo * interes) / 100;
     console.log(micuota);
     setCuota(micuota);
-    setPagado("No");
+    //setDebe("No");
     setLetra("Si");
     setFotocopia("Si");
   };
@@ -140,12 +140,12 @@ const EditarPrestamos = () => {
           />
         </div>
         <div className="division-uno">
-          <label htmlFor="pago">Pagado:</label>
+          <label htmlFor="debe">Debe:</label>
           <input
             type="text"
-            name="pagado"
-            value={pagado}
-            onChange={(ev) => setPagado(ev.target.value)}
+            name="debe"
+            value={debe}
+            onChange={(ev) => setDebe(ev.target.value)}
           />
         </div>
         

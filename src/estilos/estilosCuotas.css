@@ -1,4 +1,4 @@
-.contenido-registro {
+.contenido-registro1 {
     margin-top: 1rem;
     background-color:aquamarine;
     margin-left: 1rem;
@@ -7,30 +7,30 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     width: 18rem;
-    height: 34rem;
+    height: 22rem;
     
 }
 
-.division-uno {
+.division-uno1 {
    margin-bottom: 1rem;
 }
 
-.tittle-registro {
+.tittle-registro1 {
     margin-bottom: 1rem;
 }
 
-.division {
+.division1 {
     margin-top: 8rem;
 }
 
-.grid {
+.grid1 {
     margin-top: 12rem;
     /* display: grid;
     grid-template-columns: repeat(4,1fr); */
     gap: 2rem;
 }
 
-.listaclientes {
+.listaclientes1 {
    
    
     margin-top: 2rem;
@@ -41,14 +41,3 @@
   
 }
 
-input ,label {
-    width : 10rem;
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-input:focus {
-    background   : rgba(0,0,0,.1);
-    border-radius: 5px;
-}

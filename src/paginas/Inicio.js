@@ -3,6 +3,7 @@ import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognitio
 
 const Inicio = () => {
   const [message, setMessage] = useState('');
+  const [activo, setActivo ] = useState(false);
 
   const commands = [
     {
@@ -29,6 +30,7 @@ const Inicio = () => {
     resetTranscript,
     browserSupportsSpeechRecognition
   } = useSpeechRecognition({ commands });
+  
 
   const startListening = () => {
     resetTranscript();
@@ -47,6 +49,8 @@ const Inicio = () => {
   if (!browserSupportsSpeechRecognition) {
     return <span>Navegador no soporta el reconicimiento voz.</span>;
   }
+
+  
   return (
     <div>
       <h1>Bienvenidos</h1>

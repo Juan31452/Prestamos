@@ -4,10 +4,12 @@ import { Link, useParams } from 'react-router-dom';
 import app from "../../app.json";
 import Modal from '../../componentes/Modal';
 import CuotasCrear from '../cuotas/CuotasCrear';
+import ListarCuotas from '../cuotas/ListarCuotas';
 
 const ListarPrestamos = () => {
     let { id } = useParams();
     const [mostrar, setMostrar] = useState(false);
+    const [mostrar1, setMostrar1] = useState(false);
     const [listaprestamos, setListaprestamos ] = useState("");
     const {APIHOST}= app;
   
@@ -22,7 +24,6 @@ const ListarPrestamos = () => {
     
   return (
     <div>
-      <h1>Prestamos:{id}</h1>
       <Link to={"/CrearPrestamos"}>Adicionar</Link>
       {listaprestamos && listaprestamos.map((prestamo,i) => { 
         return(
@@ -34,18 +35,27 @@ const ListarPrestamos = () => {
             <p><strong>Cliente:</strong> {prestamo.cliente}</p>
             <p><strong>Letra:</strong> {prestamo.letra}</p>
             <p><strong>Fotocopia:</strong> {prestamo.fotocopia}</p>
-            <p><strong>Pagado:</strong> {prestamo.pagado}</p>
+            <p><strong>Debe:</strong> {prestamo.debe}</p>
 
             <Link to={"/modificarp/" + prestamo._id}>Modificar  </Link>
             <Link to={"/confirmacionPrestamo/" + prestamo._id}>Eliminar</Link>
 
             <button className='btn btn-success m-2' onClick={() => setMostrar(true)}>Cuota</button>
+            <button className='btn btn-success m-2' onClick={() => setMostrar1(true)}>VerCuotas</button>
+
             <Modal isOpen={mostrar} onClose={() => setMostrar(false)}>
               <CuotasCrear
               prestamoActual={prestamo._id}
+              cuotaActual={prestamo.cuota}
+              debeActual={prestamo.debe}
               />              
             </Modal>
-              
+
+            <Modal isOpen={mostrar1} onClose={() => setMostrar1(false)}>
+              <ListarCuotas
+              />              
+            </Modal>
+                      
           </div> 
           );          
        }

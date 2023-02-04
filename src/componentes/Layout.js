@@ -2,7 +2,7 @@ import React from 'react'
 import { Container, Dropdown, DropdownButton, Navbar } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import Voz from './Voz';
 const Layout = () => {
   return (
     <Navbar id="navbar" bg="secondary" expand="lg" variant="dark">
@@ -25,7 +25,8 @@ const Layout = () => {
               Prestamos
             </Link>
           </li>
-          </ul>
+        </ul>
+        <Voz />
         <DropdownButton id="dropdown-basic-button" title="Usuario">
         <Dropdown.Item href="/inicio">Inicio Sesion</Dropdown.Item>
         

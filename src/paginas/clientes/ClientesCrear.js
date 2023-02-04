@@ -35,7 +35,8 @@ const ClientesCrear = () => {
     
   } 
   return (
-    <div className="contenido-registro">
+    
+    <div className="contenido-registro">      
       <Form onSubmit={GuardarDatos}>
       <h1 className='tittle-registro'>Clientes</h1>
         <div className="division-uno">

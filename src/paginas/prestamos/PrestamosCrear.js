@@ -9,7 +9,7 @@ const PrestamosCrear = () => {
   const [interes, setInteres] = useState("");
   const [cuota, setCuota ] = useState(""); 
   const [cliente, setCliente] = useState("");
-  const [pagado, setPagado] = useState("");
+  const [debe, setDebe] = useState("");
   const [letra, setLetra] = useState("");
   const [fotocopia, setFotocopia] = useState("");
   const [listaclientes, setListaclientes ] = useState("");
@@ -27,7 +27,7 @@ const PrestamosCrear = () => {
       cliente: cliente,
       letra: letra,
       fotocopia: fotocopia,
-      pagado: pagado,
+      debe: debe,
       
     };
     axios
@@ -45,7 +45,7 @@ const PrestamosCrear = () => {
     let micuota = (valor_prestamo * interes)/100 ;
     console.log(micuota);
     setCuota(micuota);
-    setPagado("No");
+    setDebe(valor_prestamo);
     setLetra("Si");
     setFotocopia("Si");
     //return micuota;
@@ -66,7 +66,6 @@ const PrestamosCrear = () => {
      <Form onSubmit={GuardarDatos}>
         <h1 className='tittle-registro'>Prestamos</h1>
         <div className="division-uno">
-          <label htmlFor="lafecha">Fecha:</label>
           <input
             type="date"
             name="fecha"
@@ -74,35 +73,34 @@ const PrestamosCrear = () => {
           />
         </div>
         <div className="division-uno">
-          <label htmlFor="valorprestamo">Valor Prestamo:</label>
           <input
             type="number"
             name="valor_prestamo"
+            placeholder="Valor Prestamo"
             value={valor_prestamo} onChange={ev => setValor_prestamo(ev.target.value)}
           />
         </div>
         <div className="division-uno">
-          <label htmlFor="elinteres">Interes:</label>
           <input
             type="number"
             name="interes"
+            placeholder="Interes Ej:12"
             value={interes} 
             onChange={ev => setInteres(ev.target.value)}
             onKeyUp = {calculo}
           />
         </div>
         <div className="division-uno">
-          <label htmlFor="lacuota">Cuota:</label>
           <input
             type="number"
             name="cuota"
+            placeholder="Cuota"
             value={cuota} onChange={ev => setCuota(ev.target.value)}
             
           />
         </div>
         <div className="division-uno">
-          <label>
-           Elije un cliente:
+          
            {' '}  
            <select name = "cliente" value={cliente} onChange={ev => setCliente(ev.target.value)}>
               <option value=" " >Seleccione un Cliente...</option>             
@@ -113,24 +111,32 @@ const PrestamosCrear = () => {
                 
               ))} 
             </select>  
-          </label>
-        </div>
+         </div>
         <div className="division-uno">
-          <label htmlFor="laletra">Letra:</label>
           <input
             type="text"
             name="letra"
+            placeholder="Letra"
             value={letra} onChange={ev => setLetra(ev.target.value)}           
           />
         </div>
         <div className="division-uno">
-          <label htmlFor="lafotocopia">Fotocopia:</label>
           <input
             type="text"
             name="fotocopia"
+            placeholder="Fotocopia"
             value={fotocopia} onChange={ev => setFotocopia(ev.target.value)}           
           />
         </div>
+        <div className="division-uno">
+          <input
+            type="number"
+            name="debe"
+            placeholder="Debe"
+            value={debe} onChange={ev => setDebe(ev.target.value)}
+          />
+        </div>
+
         <Button type="submit" className="btn btn-primary">
           Adicionar
         </Button>
