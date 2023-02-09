@@ -28,18 +28,17 @@ const ListarPrestamos = () => {
       {listaprestamos && listaprestamos.map((prestamo,i) => { 
         return(
           <div className='listaclientes' key={i}>
-            <p><strong>Fecha:</strong> {prestamo.fecha}</p>
-            <p><strong>Valor prestamo:</strong> {prestamo.valor_prestamo}</p>
-            <p><strong>Interes:</strong> {prestamo.interes}</p>
-            <p><strong>Cuota:</strong> {prestamo.cuota}</p>
-            <p><strong>Cliente:</strong> {prestamo.cliente}</p>
-            <p><strong>Letra:</strong> {prestamo.letra}</p>
-            <p><strong>Fotocopia:</strong> {prestamo.fotocopia}</p>
-            <p><strong>Debe:</strong> {prestamo.debe}</p>
+            <div><strong>Fecha:</strong>{prestamo.fecha}</div>
+            <div><strong>Valor prestamo:</strong>{prestamo.valor_prestamo}</div>
+            <div><strong>Interes:</strong>{prestamo.interes}</div>
+            <div><strong>Cuota:</strong>{prestamo.cuota}</div>
+            <div><strong>Cliente:</strong>{prestamo.cliente}</div>
+            <div><strong>Letra:</strong> {prestamo.letra}</div>
+            <div><strong>Fotocopia:</strong> {prestamo.fotocopia}</div>
+            <div><strong>Debe:</strong>{prestamo.debe}</div>
 
             <Link to={"/modificarp/" + prestamo._id}>Modificar  </Link>
             <Link to={"/confirmacionPrestamo/" + prestamo._id}>Eliminar</Link>
-
             <button className='btn btn-success m-2' onClick={() => setMostrar(true)}>Cuota</button>
             <button className='btn btn-success m-2' onClick={() => setMostrar1(true)}>VerCuotas</button>
 
@@ -51,9 +50,10 @@ const ListarPrestamos = () => {
               />              
             </Modal>
 
-            <Modal isOpen={mostrar1} onClose={() => setMostrar1(false)}>
-              <ListarCuotas
-              />              
+            <Modal isOpen={mostrar1} onClose={() => setMostrar1(false)}>              
+                <ListarCuotas
+                prestamoCliente = {prestamo._id}
+                />                            
             </Modal>
                       
           </div> 

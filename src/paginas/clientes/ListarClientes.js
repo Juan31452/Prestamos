@@ -2,10 +2,14 @@ import React, { useEffect, useState } from 'react'
 import app from "../../app.json";
 import axios from 'axios';
 import { Link } from "react-router-dom";
-import { Container } from 'react-bootstrap';
+import Modal from '../../componentes/Modal';
+import ListarPrestamos from '../prestamos/ListarPrestamos';
+
 
 const ListarClientes = () => {
+  const [mostrar, setMostrar] = useState(false);
   const [listaclientes, setListaclientes ] = useState("");
+  
   const {APIHOST}= app;
 
   useEffect(() => {
@@ -33,8 +37,9 @@ const ListarClientes = () => {
               
               <Link to={"/modificar/" + cliente._id}>Modificar  </Link>
               <Link to={"/confirmacion/" + cliente._id}>Eliminar</Link>
-              <Link to={"/ListaPrestamos/" + cliente._id}>Prestamos</Link>
               
+            
+             
             </div> 
             );          
          }
