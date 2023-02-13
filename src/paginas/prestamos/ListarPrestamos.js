@@ -5,6 +5,8 @@ import app from "../../app.json";
 import Modal from '../../componentes/Modal';
 import CuotasCrear from '../cuotas/CuotasCrear';
 import ListarCuotas from '../cuotas/ListarCuotas';
+import  '../../estilos/grid.css'
+import Milink from '../../componentes/Milink';
 
 const ListarPrestamos = () => {
     let { id } = useParams();
@@ -12,6 +14,17 @@ const ListarPrestamos = () => {
     const [mostrar1, setMostrar1] = useState(false);
     const [listaprestamos, setListaprestamos ] = useState("");
     const {APIHOST}= app;
+    const [selectedLoan, setSelectedLoan] = useState(null);
+
+  const handleRowClick = prestamo => {
+    setSelectedLoan(prestamo);
+    console.log(prestamo._id);
+    let elid = prestamo._id;
+    
+            
+  };
+   
+  
   
     useEffect(() => {
           axios
@@ -21,46 +34,54 @@ const ListarPrestamos = () => {
           });
           console.log(listaprestamos); 
    },[]);
-    
+  
+  const url =  "/modificarp/"
   return (
-    <div>
-      <Link to={"/CrearPrestamos"}>Adicionar</Link>
+    
+    <div className="table">
+    
+    {selectedLoan ? (
+      <div>
+        <div className='enlace'><Milink to={"/CrearPrestamos"}>Adicionar</Milink></div>    
+        <div className='enlace'><Milink to={`/modificarp/${selectedLoan._id}`}>Modifica  </Milink> </div>
+        <div className='enlace'><Milink to={`/confirmacionPrestamo/${selectedLoan._id}`}>Elimina</Milink></div>
+        <div className='enlace'><Milink to={`/ListarCuotas/${selectedLoan._id}`} >cuotas</Milink></div>     
+
+      </div>
+     
+    ) : null}
+     
+      <div className="table-header">
+      
+          <div className='table-cell'>Cliente </div>
+          <div className='table-cell'>Fecha </div>
+          <div className='table-cell'>Prestamo </div>
+          <div className='table-cell'>Interes </div>
+          <div className='table-cell'>cuota </div>
+          <div className='table-cell'>Debe </div>
+      </div>    
       {listaprestamos && listaprestamos.map((prestamo,i) => { 
         return(
-          <div className='listaclientes' key={i}>
-            <div><strong>Fecha:</strong>{prestamo.fecha}</div>
-            <div><strong>Valor prestamo:</strong>{prestamo.valor_prestamo}</div>
-            <div><strong>Interes:</strong>{prestamo.interes}</div>
-            <div><strong>Cuota:</strong>{prestamo.cuota}</div>
-            <div><strong>Cliente:</strong>{prestamo.cliente}</div>
-            <div><strong>Letra:</strong> {prestamo.letra}</div>
-            <div><strong>Fotocopia:</strong> {prestamo.fotocopia}</div>
-            <div><strong>Debe:</strong>{prestamo.debe}</div>
-
-            <Link to={"/modificarp/" + prestamo._id}>Modificar  </Link>
-            <Link to={"/confirmacionPrestamo/" + prestamo._id}>Eliminar</Link>
-            <button className='btn btn-success m-2' onClick={() => setMostrar(true)}>Cuota</button>
-            <button className='btn btn-success m-2' onClick={() => setMostrar1(true)}>VerCuotas</button>
-
-            <Modal isOpen={mostrar} onClose={() => setMostrar(false)}>
-              <CuotasCrear
-              prestamoActual={prestamo._id}
-              cuotaActual={prestamo.cuota}
-              debeActual={prestamo.debe}
-              />              
-            </Modal>
-
-            <Modal isOpen={mostrar1} onClose={() => setMostrar1(false)}>              
-                <ListarCuotas
-                prestamoCliente = {prestamo._id}
-                />                            
-            </Modal>
-                      
+          
+          <div  key={i}
+          className={`table-row ${selectedLoan === prestamo ? 'selected' : ''}`}
+          onClick={() => handleRowClick(prestamo)}
+          >
+            <div className='table-cell'>{prestamo.cliente}</div>
+            <div className='table-cell'>{prestamo.fecha}</div>
+            <div className='table-cell'>{prestamo.valor_prestamo}</div>
+            <div className='table-cell'>{prestamo.interes}</div>
+            <div className='table-cell'>{prestamo.cuota}</div>
+            <div className='table-cell'>{prestamo.debe}</div>               
+                
+            
           </div> 
+          
           );          
        }
       )}
-      
+
+     
     </div>
   )
 }

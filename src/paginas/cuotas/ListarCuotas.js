@@ -2,14 +2,16 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import  '../../estilos/grid.css'
 import app from "../../app.json";
+import { useParams } from 'react-router-dom';
 
 const {APIHOST}= app;
   
-const ListarCuotas = ({prestamoCliente}) => {
-  const [listacuotas, setListacuotas ] = useState(null);
+const ListarCuotas = () => {
+  const [listacuotas, setListacuotas ] = useState("");
+  let { id } = useParams();
 
   useEffect(() => {
-    let url = `${APIHOST}/cuotas/buscarprestamo/` + prestamoCliente
+    let url = `${APIHOST}/cuotas/buscarprestamo/` + id;
     axios
     .get(url)
     .then(res => { console.log(res.data)
@@ -17,31 +19,32 @@ const ListarCuotas = ({prestamoCliente}) => {
     });
     console.log(url);
     console.log(listacuotas);
-    console.log(prestamoCliente); 
+    console.log(id); 
 },[]);
 
   return (
-    <div className='Contenedor'>
+    <div className="table">
+            
+      <div className="table-header">
       <div className='encabezado'>Fecha </div>
-      <div className='encabezado1'>Interes </div>
-      <div className='encabezado1'>Abono </div>
-      <div className='encabezado1'>Saldo </div>
-      <div className='encabezado1'> </div>
-      <div className='encabezado1'> </div>
+      <div className='encabezado'>Interes </div>
+      <div className='encabezado'>Abono </div>
+      <div className='encabezado'>Saldo </div>
+    </div>  
       {listacuotas && listacuotas.map((item,i) => {
         return(        
-        <div key={i}>
+        <div className='table-row' key={i}>
           <div className='datos'>{item.fecha}</div>
-          <div className='datos1'>{item.interes}</div>
-          <div className='datos1'>{item.abono_capital}</div>
-          <div className='datos1'>{item.saldo}</div>
-          <button class="edit-button">Editar</button>
-          <button class="delete-button">Eliminar</button>
+          <div className='datos'>{item.interes}</div>
+          <div className='datos'>{item.abono_capital}</div>
+          <div className='datos'>{item.saldo}</div>
+          
         </div>
+       
         );
       })}
   
-  
+      
       
     </div>
   ); 

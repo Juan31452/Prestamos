@@ -10,8 +10,8 @@
   }
   
   .modal-body {
-    background-color: white;
-    width: 45%;
+    background-color: rgb(30, 25, 82);
+    width: 70%;
     height: 66%;
     min-width: 200px;
     border-radius: 1rem;

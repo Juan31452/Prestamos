@@ -1,59 +1,27 @@
 .Contenedor {
-  width: 91%;
+  width: 90%;
   margin: 0 auto;
 }
 
 .encabezado {
-  width: 80px;
-  height: 25px;
-  background-color: lightblue;
-  float: left;
-  padding: 1px;
-  position: relative;
-  top:39px;
-  border: 1px solid black;
+  display: table-cell;
+  padding: 8px;
+  border-right: 1px solid gray;
+  vertical-align: middle;
+  background-color: rgb(107, 227, 113);}
 
-}
-
-.encabezado1 {
-  width: 60px;
-  height: 25px;
-  background-color: lightblue;
-  float: left;
-  padding: 1px;
-  position: relative;
-  top:39px;
-  border: 1px solid black;
-
-}
 
 .datos {
-  width: 80px;
-  height: 25px;
-  background-color: rgb(96, 82, 159);
-  float: left;
-  padding: 1px;
-  position: relative;
-  top:42px;
-  border: 1px solid black;
-  font-size: 14px;
-}
+  display: table-cell;
+  padding: 8px;
+  border-right: 1px solid rgb(200, 143, 143);
+  vertical-align: middle;
+  background-color: rgb(107, 227, 113);}
 
-.datos1 {
-  width: 60px;
-  height: 25px;
-  background-color: rgb(96, 82, 159);
-  float: left;
-  padding: 1px;
-  position: relative;
-  top:42px;
-  border: 1px solid black;
-  font-size: 14px;
-}
 
 
 .edit-button {
-  width: 60px;
+  width: 15%;
   height: 25px;
   background-color: rgb(55, 59, 160);  
   float: left;
@@ -66,7 +34,7 @@
 }
 
 .delete-button {
-  width: 60px;
+  width: 15%;
   height: 25px;
   background-color: rgb(55, 59, 160);  
   float: left;
@@ -78,4 +46,41 @@
   font-size: 14px;
 }
 
+.table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-header {
+  display: table-row;
+  background-color: lightgray;
+  font-weight: bold;
+}
+
+.table-row {
+  display: table-row;
+  
+}
+
+.table-cell {
+  display: table-cell;
+  padding: 8px;
+  border-right: 1px solid gray;
+  vertical-align: middle;
+  
+}
+
+  .table-row.selected {
+    background-color: lightblue;
+  }
+
+  .enlace {
+  display: table-cell;
+  justify-content: "space-between";
+  padding: 1px;
+  vertical-align: middle;
+  
+    
+  }
 
