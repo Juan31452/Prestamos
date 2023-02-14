@@ -64,7 +64,7 @@ const PrestamosCrear = () => {
   return (
     <div className="contenido-registro">
      <Form onSubmit={GuardarDatos}>
-        <h1 className='tittle-registro'>Prestamos</h1>
+        <h3 className='tittle-registro'>Prestamos</h3>
         <div className="division-uno">
           <input
             type="date"

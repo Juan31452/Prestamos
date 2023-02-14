@@ -38,46 +38,46 @@ const ClientesCrear = () => {
     
     <div className="contenido-registro">      
       <Form onSubmit={GuardarDatos}>
-      <h1 className='tittle-registro'>Clientes</h1>
+      <h3 className='tittle-registro'>Clientes</h3>
         <div className="division-uno">
-          <label htmlFor="losnombres">Nombres:</label>
           <input
             type="text"
             name="nombres"
+            placeholder="Nombres"
             value={nombres} onChange={ev => setNombres(ev.target.value)}            
           />
         </div>
         <div className="division-uno">
-          <label htmlFor="losapellidos">Apellidos:</label>
           <input
             type="text"
             name="apellidos"
+            placeholder="Apellidos"
             value={apellidos} onChange={ev => setApellidos(ev.target.value)}
           />
         </div>
         <div className="division-uno">
-          <label htmlFor="elcorreo">correo:</label>
           <input
             type="text"
             name="correo"
+            placeholder="Correo"
             value={correo} onChange={ev => setCorreo(ev.target.value)}
             
           />
         </div>
         <div className="division-uno">
-          <label htmlFor="lacedula">Cedula:</label>
           <input
             type="text"
             name="cedula"
+            placeholder="Cedula"
             value={cedula} onChange={ev => setCedula(ev.target.value)}
             
           />
         </div>
         <div className="division-uno">
-          <label htmlFor="ladireccion">Direccion:</label>
           <input
             type="text"
             name="direccion"
+            placeholder="direccion"
             value={direccion} onChange={ev => setDireccion(ev.target.value)}          />
         </div>
         <Button type="submit" className="btn btn-primary">
