@@ -1,18 +1,17 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
 import app from "../../app.json";
 import Modal from '../../componentes/Modal';
 import PrestamosCrear from './PrestamosCrear';
 import  '../../estilos/grid.css'
+import Loading from '../../componentes/Loading';
 import Milink from '../../componentes/Milink';
 
 const ListarPrestamos = () => {
-    let { id } = useParams();
     const [mostrar, setMostrar] = useState(false);
-    const [mostrar1, setMostrar1] = useState(false);
     const [listaprestamos, setListaprestamos ] = useState("");
     const {APIHOST}= app;
+    const [isLoading, setIsLoading] = useState(true);
     const [selectedLoan, setSelectedLoan] = useState(null);
 
   const handleRowClick = prestamo => {
@@ -29,11 +28,16 @@ const ListarPrestamos = () => {
           setListaprestamos(res.data)  
           });
           console.log(listaprestamos); 
+          setIsLoading(false);
    },[]);
   
-  
+   if (isLoading) {
+    return <div> <Loading /> </div>;
+    }
+
   return (
     <div>
+    
       <button className='btn btn-success m-2' onClick={() => setMostrar(true)}>Adicionar</button>
         
       <div className="table">
@@ -84,7 +88,7 @@ const ListarPrestamos = () => {
         <PrestamosCrear
         />              
       </Modal>
-
+   
     </div> 
   )
 }

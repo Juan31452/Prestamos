@@ -4,6 +4,7 @@ import axios from 'axios';
 import Milink from '../../componentes/Milink';
 import Modal from '../../componentes/Modal';
 import ClientesCrear from './ClientesCrear';
+import Loading from '../../componentes/Loading';
 
 const ListarClientes = () => {
   const [mostrar, setMostrar] = useState(false);
@@ -11,6 +12,7 @@ const ListarClientes = () => {
   
   const {APIHOST}= app;
   const [selectedLoan, setSelectedLoan] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   
   const handleRowClick = cliente => {
     setSelectedLoan(cliente);
@@ -25,9 +27,14 @@ const ListarClientes = () => {
         setListaclientes(res.data)  
         });
         console.log(listaclientes); 
+        setIsLoading(false);
+
  },[]);
    
-  
+ if (isLoading) {
+  return <div> <Loading /> </div>;
+  }
+
   return (
      <div>
         <h3>Clientes</h3>

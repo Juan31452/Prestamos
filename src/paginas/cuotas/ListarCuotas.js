@@ -5,6 +5,8 @@ import app from "../../app.json";
 import { useParams } from 'react-router-dom';
 import Modal from '../../componentes/Modal';
 import CuotasCrear from './CuotasCrear';
+import Loading from '../../componentes/Loading';
+
 const {APIHOST}= app;
   
 const ListarCuotas = () => {
@@ -12,6 +14,7 @@ const ListarCuotas = () => {
   const [listacuotas, setListacuotas ] = useState("");
   let { id } = useParams();
   const [selectedLoan, setSelectedLoan] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   
   const handleRowClick = cuota => {
     setSelectedLoan(cuota);
@@ -29,8 +32,15 @@ const ListarCuotas = () => {
     console.log(url);
     console.log(listacuotas);
     console.log(id); 
-},[]);
+    setIsLoading(false);
 
+  },[]);
+
+  if (isLoading) {
+    return <div> <Loading /> </div>;
+    }
+
+  
   return (
     <div>
       <button className='btn btn-success m-2' onClick={() => setMostrar(true)}>Adicionar</button>
