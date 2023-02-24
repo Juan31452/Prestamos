@@ -84,3 +84,12 @@
     
   }
 
+  @media screen and (max-width: 768px) {
+    .table {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .table-row {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }

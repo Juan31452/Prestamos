@@ -8,7 +8,7 @@ import Loading from '../../componentes/Loading';
 
 const ListarClientes = () => {
   const [mostrar, setMostrar] = useState(false);
-  const [listaclientes, setListaclientes ] = useState("");
+  const [listaclientes, setListaclientes ] = useState([]);
   
   const {APIHOST}= app;
   const [selectedLoan, setSelectedLoan] = useState(null);
@@ -21,15 +21,18 @@ const ListarClientes = () => {
   };
 
   useEffect(() => {
-        axios
-        .get(`${APIHOST}/clientes `)
-        .then(res => { console.log(res.data)
-        setListaclientes(res.data)  
-        });
-        console.log(listaclientes); 
-        setIsLoading(false);
+    const fetchClientes = async () => {
+      try {
+        const response = await axios.get(`${APIHOST}/clientes`);
+        setListaclientes(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+      setIsLoading(false);
+    };
 
- },[]);
+    fetchClientes();
+  }, [APIHOST]);
    
  if (isLoading) {
   return <div> <Loading /> </div>;
