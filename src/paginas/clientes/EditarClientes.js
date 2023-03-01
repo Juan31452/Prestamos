@@ -17,20 +17,24 @@ const EditarClientes = () => {
 
     useEffect(() => {
       console.log(id); 
+      const editarClientes = async () => {
+        try {
+          const response = await axios.get(`${APIHOST}/clientes/`+ id);
+          setNombres(response.data.nombres);
+          setApellidos(response.data.apellidos);
+          setCorreo(response.data.correo);
+          setCedula(response.data.cedula);
+          setDireccion(response.data.direccion);
+          console.log(nombres);
+        } catch (error) {
+          console.error(error);
+        }
+        
+      };
 
-      console.log(id);
-      axios.get(`${APIHOST}/clientes/`+ id)
-      .then(res => {console.log(res)
-        setNombres(res.data.nombres);
-        setApellidos(res.data.apellidos);
-        setCorreo(res.data.correo);
-        setCedula(res.data.cedula);
-        setDireccion(res.data.direccion);
-        console.log(nombres); 
-                   
-      });
-    },[])
-    
+      editarClientes();
+    },[] );
+      
     const MostrarAlerta = () => {
       mialerta({
         title:"Clientes",

@@ -23,18 +23,18 @@ const ListarCuotas = () => {
   };
   
   useEffect(() => {
-    let url = `${APIHOST}/cuotas/buscarprestamo/` + id;
-    axios
-    .get(url)
-    .then(res => { console.log(res.data)
-      setListacuotas(res.data)  
-    });
-    console.log(url);
-    console.log(listacuotas);
-    console.log(id); 
-    setIsLoading(false);
+    const fetchCuotas = async () => {
+      try {
+        const response = await axios.get(`${APIHOST}/cuotas/buscarprestamo/` + id);
+        setListacuotas(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+      setIsLoading(false);
+    };
 
-  },[]);
+    fetchCuotas();
+  }, [APIHOST]);
 
   if (isLoading) {
     return <div> <Loading /> </div>;

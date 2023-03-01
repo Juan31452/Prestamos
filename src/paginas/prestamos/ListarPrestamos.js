@@ -22,14 +22,18 @@ const ListarPrestamos = () => {
    
     
     useEffect(() => {
-          axios
-          .get(`${APIHOST}/prestamos `)
-          .then(res => { console.log(res.data)
-          setListaprestamos(res.data)  
-          });
-          console.log(listaprestamos); 
-          setIsLoading(false);
-   },[]);
+      const fetchPrestamos = async () => {
+        try {
+          const response = await axios.get(`${APIHOST}/prestamos`);
+          setListaprestamos(response.data);
+        } catch (error) {
+          console.error(error);
+        }
+        setIsLoading(false);
+      };
+  
+      fetchPrestamos();
+    }, [APIHOST]);
   
    if (isLoading) {
     return <div> <Loading /> </div>;

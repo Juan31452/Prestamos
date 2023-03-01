@@ -26,7 +26,7 @@ const Menu = () => {
       <Layout />
        
       <Routes>
-           <Route path="/inicio" element={<Inicio/>}></Route>
+           <Route path="/" element={<Inicio/>}></Route>
            <Route path={PRIVATE1} element={<CrearClientes/>}></Route>
            <Route path={PRIVATE2} element={<ListarClientes/>}></Route>  
            <Route path={PRIVATE3} element={<EditarCliente />}></Route>

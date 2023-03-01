@@ -9,7 +9,7 @@ const Layout = () => {
         <ul>
           <li>
             <Navbar.Brand className="navbar-brand-custom">
-              <Link to="/inicio" className="edit-link">
+              <Link to="/" className="edit-link">
                 Inicio
               </Link>
             </Navbar.Brand>

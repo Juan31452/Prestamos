@@ -14,7 +14,7 @@ const EditarPrestamos = () => {
   const [debe, setDebe] = useState("");
   const [letra, setLetra] = useState("");
   const [fotocopia, setFotocopia] = useState("");
-  const [listaclientes, setListaclientes] = useState("");
+  //const [listaclientes, setListaclientes] = useState("");
   const { APIHOST } = app;
 
   let { id } = useParams();

@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import axios from "axios";
 import app from "../../app.json";
-import { useParams } from 'react-router-dom';
+//import { useParams } from 'react-router-dom';
 
 
 const CuotasCrear = ({prestamoActual}) => {
@@ -15,7 +15,7 @@ const CuotasCrear = ({prestamoActual}) => {
   const {APIHOST}= app;
   const [listaprestamos, setListaprestamos ] = useState("");
 
-  let { id } = useParams();
+  //let { id } = useParams();
 
   
   

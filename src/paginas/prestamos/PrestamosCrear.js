@@ -53,13 +53,17 @@ const PrestamosCrear = () => {
   }
 
   useEffect(() => {
-    axios
-    .get(`${APIHOST}/clientes `)
-    .then(res => { console.log(res.data)
-    setListaclientes(res.data)  
-    });
-    console.log(listaclientes); 
-},[]);
+    const fetchClientes = async () => {
+      try {
+        const response = await axios.get(`${APIHOST}/clientes`);
+        setListaclientes(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchClientes();
+  }, [APIHOST]);
 
   return (
     <div className="contenido-registro">
