@@ -1,5 +1,6 @@
 @import  "estilosClientes.css";
 @import "estilosCuotas.css";
+@import "botones.css";
 
 .App {
   text-align: center;

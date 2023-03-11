@@ -1,0 +1,18 @@
+#contenedorBotonAdiciona{
+    text-align: left;
+    display: 'inline-block';
+    margin-bottom: 3px;
+    
+ }
+
+ #miboton {
+    font-size: 14px;
+    padding: 3px;
+    background-color: #668def;
+    cursor: pointer;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    border: none;
+ }
+ 

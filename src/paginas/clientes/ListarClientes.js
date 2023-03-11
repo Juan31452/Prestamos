@@ -5,12 +5,15 @@ import Milink from '../../componentes/Milink';
 import Modal from '../../componentes/Modal';
 import ClientesCrear from './ClientesCrear';
 import Loading from '../../componentes/Loading';
+import ListarDatos from '../../componentes/ListarDatos';
+import Consultar from '../../componentes/Consultar';
 
 const ListarClientes = () => {
   const [mostrar, setMostrar] = useState(false);
   const [listaclientes, setListaclientes ] = useState([]);
   
   const {APIHOST}= app;
+  const coleccion= 'clientes'
   const [selectedLoan, setSelectedLoan] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   
@@ -37,11 +40,27 @@ const ListarClientes = () => {
  if (isLoading) {
   return <div> <Loading /> </div>;
   }
+  
+  const buscarClientesPorNombre = async (consulta) => {
+    try {
+      const response = await axios.get(`${APIHOST}/clientes/buscarPorNombre/${consulta}`);
+      setListaclientes(response.data);
+      console.log(consulta);
+      console.log(listaclientes);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
      <div>
         <h3>Clientes</h3>
-        <button className='btn btn-success m-2' onClick={() => setMostrar(true)}>Adicionar</button>
+        <Consultar onBuscar={buscarClientesPorNombre}/>
+        
+        <div id='contenedorBotonAdiciona'>
+          <button id='miboton' onClick={() => setMostrar(true)}>Adicionar</button> 
+        </div>
+
         <div className="table">
           
         {selectedLoan ? (
@@ -86,6 +105,7 @@ const ListarClientes = () => {
           <ClientesCrear
           />              
         </Modal>
+        <ListarDatos APIHOST={APIHOST} coleccion={coleccion}/>
          
      </div>
    
