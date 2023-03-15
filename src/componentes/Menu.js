@@ -14,6 +14,7 @@ import ConfirmacionPrestamo from "../componentes/ConfirmacionPrestamo";
 import EliminarPrestamos from '../paginas/prestamos/EliminarPrestamos';
 import CuotasCrear from "../paginas/cuotas/CuotasCrear";
 import ListarCuotas from '../paginas/cuotas/ListarCuotas';
+import UsuariosCrear from '../paginas/usuarios/UsuariosCrear';
 import Nofound from '../paginas/Nofound'
 import { PRIVATE1,PRIVATE2,PRIVATE3,PRIVATE4,PRIVATE5,PRIVATE6,PRIVATE7,PRIVATE8,PRIVATE9,PRIVATE10,
   PRIVATE11,PRIVATE12,PRIVATE13} from './Path';
@@ -27,6 +28,7 @@ const Menu = () => {
        
       <Routes>
            <Route path="/" element={<Inicio/>}></Route>
+           <Route path="/UsuarioCrear" element={<UsuariosCrear/>}></Route>
            <Route path={PRIVATE1} element={<CrearClientes/>}></Route>
            <Route path={PRIVATE2} element={<ListarClientes/>}></Route>  
            <Route path={PRIVATE3} element={<EditarCliente />}></Route>

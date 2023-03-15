@@ -1,13 +1,19 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './estilos/index.css';
-import App from './App';
+import ReactDom from 'react-dom/client';
+import {BrowserRouter as  Router } from "react-router-dom";
+import App from './App'; 
+//import * as serviceWorker from './serviceWorker';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDom.createRoot(document.getElementById('root'));
+
+
 root.render(
-  <div>
-    <App />
-  </div>
-);
+    <Router>
+       <div>
+         <App />
+        </div>
+    </Router>       
+    //document.getElementById("root")
+    );
 
 

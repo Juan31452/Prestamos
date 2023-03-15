@@ -1,22 +1,26 @@
 .contenido-registro {
     margin-top: 0.5rem;
-    background-color:rgb(194, 238, 182);
+    background-color:rgb(136, 188, 234);
     margin-left: 1rem;
     border-radius: 2rem;
     padding: 1rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    width: 18rem;
     height: 25rem;
-    
+    width: 50%; /* Define el ancho del div */
+    margin: 0 auto; /* Define margen superior e inferior a 0 y margen izquierdo y derecho como auto */
+
 }
 
 .division-uno {
-   margin-bottom: 0.5rem;
-}
+   margin-bottom: 1rem; 
+   text-align: center; /* opcional - para centrar el texto dentro del div */
+
+   }
 
 .tittle-registro {
     margin-bottom: 0.5rem;
+    text-align: center;
 }
 
 .division {
@@ -42,7 +46,7 @@
 }
 
 input ,label {
-    width : 10rem;
+    width : 12rem;
     padding: 0;
     margin: 0;
     box-sizing: border-box;

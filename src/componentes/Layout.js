@@ -1,8 +1,13 @@
 import React from 'react'
 import { Container, Dropdown, DropdownButton, Navbar } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { useContext } from 'react';
+import { ContextoUsuario } from './contexto/ContextoUsuario';
+
 //import Voz from './Voz';
 const Layout = () => {
+  const { email } = useContext(ContextoUsuario);
+
   return (
     <Navbar id="navbar" bg="secondary" expand="lg" variant="dark">
       <Container>
@@ -25,7 +30,8 @@ const Layout = () => {
             </Link>
           </li>
         </ul>
-        
+         <p>Email: {email}</p>
+         
         <DropdownButton id="dropdown-basic-button" title="Usuario">
         <Dropdown.Item href="/inicio">Inicio Sesion</Dropdown.Item>
         

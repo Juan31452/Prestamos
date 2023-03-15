@@ -52,6 +52,15 @@
   background-color: #0069d9;
 }
 
+.contenedorEnlace{
+  width: 50%; /* Define el ancho del div */
+  margin: 0 auto; /* Define margen superior e inferior a 0 y margen izquierdo y derecho como auto */
+}
+
+.enlace{
+  text-decoration: none;
+}
+
 /* Estilos para pantallas pequeñas */
 @media (max-width: 400px) {
   .login-form {

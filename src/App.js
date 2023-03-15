@@ -1,19 +1,18 @@
 
 import './estilos/App.css';
 import Menu from './componentes/Menu';
-import {BrowserRouter as  Router } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { UserProvider } from './componentes/contexto/ContextoUsuario';
 
 function App() {
   return ( 
-    
+    <UserProvider>
     <div className="App">
-    <Router>
-       <Menu/>       
-    </Router>
-    </div>
-           
-
+       
+         <Menu/>  
+       
+    </div>       
+    </UserProvider>
   );
 }
 
