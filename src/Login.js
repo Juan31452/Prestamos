@@ -26,11 +26,14 @@ const Login = () => {
     
      
         };
-        const response = await axios.get(`${APIHOST}/usuarios `,usuarioActual)
-        
-       
+        const response = await axios.post(`${APIHOST}/usuarios/login `,usuarioActual)
+        const { _id: id } = response.data;
+        const {interes: interes} = response.data;
+        console.log(id);
+        console.log(interes);
+
         if (response.data) {
-          await login(email, password);  // pasar el email y password al método login del contexto 
+          await login(email, interes, id);  // pasar el email y password al método login del contexto 
         } else {
           setError("Credenciales inválidas");
           console.log("Credenciales inválidas");
