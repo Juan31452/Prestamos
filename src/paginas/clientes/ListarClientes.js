@@ -7,8 +7,11 @@ import ClientesCrear from './ClientesCrear';
 import Loading from '../../componentes/Loading';
 import ListarDatos from '../../componentes/ListarDatos';
 import Consultar from '../../componentes/Consultar';
+import { useContext } from 'react';
+import { ContextoUsuario } from '../../componentes/contexto/ContextoUsuario';
 
 const ListarClientes = () => {
+  const { id } = useContext(ContextoUsuario);
   const [mostrar, setMostrar] = useState(false);
   const [listaclientes, setListaclientes ] = useState([]);
   
@@ -26,7 +29,7 @@ const ListarClientes = () => {
   useEffect(() => {
     const fetchClientes = async () => {
       try {
-        const response = await axios.get(`${APIHOST}/clientes`);
+        const response = await axios.get(`${APIHOST}/clientes/buscarPorUsuario/`+ id);
         setListaclientes(response.data);
       } catch (error) {
         console.error(error);
