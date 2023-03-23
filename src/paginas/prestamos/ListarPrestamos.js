@@ -41,8 +41,12 @@ const ListarPrestamos = () => {
 
   return (
     <div>
-    
-      <button className='btn btn-success m-2' onClick={() => setMostrar(true)}>Adicionar</button>
+      <h3>Prestamos</h3>
+      
+      <div id='contenedorBotonAdiciona'>
+          <button id='miboton' onClick={() => setMostrar(true)}>Adicionar</button> 
+      </div>
+
         
       <div className="table">
       
@@ -61,7 +65,6 @@ const ListarPrestamos = () => {
             <div className='table-cell'>Cliente </div>
             <div className='table-cell'>Fecha </div>
             <div className='table-cell'>Prestamo </div>
-            <div className='table-cell'>Interes </div>
             <div className='table-cell'>cuota </div>
             <div className='table-cell'>Debe </div>
         </div>    
@@ -75,7 +78,6 @@ const ListarPrestamos = () => {
               <div className='table-cell'>{prestamo.cliente}</div>
               <div className='table-cell'>{prestamo.fecha}</div>
               <div className='table-cell'>{prestamo.valor_prestamo}</div>
-              <div className='table-cell'>{prestamo.interes}</div>
               <div className='table-cell'>{prestamo.cuota}</div>
               <div className='table-cell'>{prestamo.debe}</div>               
                   

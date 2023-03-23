@@ -2,11 +2,13 @@ import { Button, Form } from "react-bootstrap";
 import React, { useEffect, useState } from 'react'
 import app from "../../app.json";
 import axios from "axios";
+import { useContext } from 'react';
+import { ContextoUsuario } from '../../componentes/contexto/ContextoUsuario';
 
 const PrestamosCrear = () => {
   const [fecha, setFecha ] = useState(""); 
   const [valor_prestamo, setValor_prestamo] = useState("");
-  const [interes, setInteres] = useState("");
+  //const [miinteres, setMiinteres] = useState("");
   const [cuota, setCuota ] = useState(""); 
   const [cliente, setCliente] = useState("");
   const [debe, setDebe] = useState("");
@@ -14,7 +16,9 @@ const PrestamosCrear = () => {
   const [fotocopia, setFotocopia] = useState("");
   const [listaclientes, setListaclientes ] = useState("");
   const {APIHOST}= app;
- 
+  const { id, interes } = useContext(ContextoUsuario);
+  
+
   const GuardarDatos = (event) => {
     event.preventDefault()
 
@@ -22,19 +26,20 @@ const PrestamosCrear = () => {
        
       fecha: fecha,
       valor_prestamo: valor_prestamo,
-      interes: interes,
+      miinteres: interes,
       cuota: cuota,
       cliente: cliente,
       letra: letra,
       fotocopia: fotocopia,
       debe: debe,
+      usuario: id,
       
     };
     axios
     .post(`${APIHOST}/prestamos `,prestamoActual)
     .then((res) => { 
      const prestamo = res.data;
-       window.location.replace('/prestamos');    
+       window.location.replace('/');    
       console.log(prestamo);   
     });
     
@@ -44,6 +49,7 @@ const PrestamosCrear = () => {
   const calculo = () => {
     let micuota = (valor_prestamo * interes)/100 ;
     console.log(micuota);
+    //setMiinteres(interes);
     setCuota(micuota);
     setDebe(valor_prestamo);
     setLetra("Si");
@@ -55,7 +61,7 @@ const PrestamosCrear = () => {
   useEffect(() => {
     const fetchClientes = async () => {
       try {
-        const response = await axios.get(`${APIHOST}/clientes`);
+        const response = await axios.get(`${APIHOST}/clientes/buscarPorUsuario/`+ id);
         setListaclientes(response.data);
       } catch (error) {
         console.error(error);
@@ -82,15 +88,6 @@ const PrestamosCrear = () => {
             name="valor_prestamo"
             placeholder="Valor Prestamo"
             value={valor_prestamo} onChange={ev => setValor_prestamo(ev.target.value)}
-          />
-        </div>
-        <div className="division-uno">
-          <input
-            type="number"
-            name="interes"
-            placeholder="Interes Ej:12"
-            value={interes} 
-            onChange={ev => setInteres(ev.target.value)}
             onKeyUp = {calculo}
           />
         </div>
@@ -138,12 +135,12 @@ const PrestamosCrear = () => {
             name="debe"
             placeholder="Debe"
             value={debe} onChange={ev => setDebe(ev.target.value)}
+            readonly
           />
         </div>
 
-        <Button type="submit" className="btn btn-primary">
-          Adicionar
-        </Button>
+        <Button type="submit" className="btn btn-primary">Adicionar</Button>
+        
       </Form>
     </div>
   );

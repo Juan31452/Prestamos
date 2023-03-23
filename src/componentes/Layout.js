@@ -6,7 +6,7 @@ import { ContextoUsuario } from './contexto/ContextoUsuario';
 
 //import Voz from './Voz';
 const Layout = () => {
-  const { email } = useContext(ContextoUsuario);
+  const { email,logout } = useContext(ContextoUsuario);
 
   return (
     <Navbar id="navbar" bg="secondary" expand="lg" variant="dark">
@@ -33,8 +33,7 @@ const Layout = () => {
          <p>Email: {email}</p>
          
         <DropdownButton id="dropdown-basic-button" title="Usuario">
-        <Dropdown.Item href="/inicio">Inicio Sesion</Dropdown.Item>
-        
+        <Dropdown.Item onClick={logout}>Cerrar Sesion</Dropdown.Item>
         </DropdownButton>
       </Container>
     </Navbar>

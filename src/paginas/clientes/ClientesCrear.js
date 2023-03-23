@@ -2,6 +2,9 @@ import axios from 'axios';
 import { Button, Form } from "react-bootstrap";
 import React, { useState } from "react";
 import app from "../../app.json";
+import { useContext } from 'react';
+import { ContextoUsuario } from '../../componentes/contexto/ContextoUsuario';
+
 
 const ClientesCrear = () => {
   const {APIHOST}= app;
@@ -10,7 +13,8 @@ const ClientesCrear = () => {
   const [correo, setCorreo] = useState("");
   const [cedula, setCedula ] = useState(""); 
   const [direccion, setDireccion] = useState("");
-  
+  const { id } = useContext(ContextoUsuario);
+
   
   const GuardarDatos = (event) => {
     event.preventDefault()
@@ -22,6 +26,7 @@ const ClientesCrear = () => {
       correo: correo,
       cedula: cedula,
       direccion: direccion,
+      usuario: id, 
   
     };
     
@@ -29,7 +34,7 @@ const ClientesCrear = () => {
     .post(`${APIHOST}/clientes `,usuarioActual)
     .then((res) => { 
      const usuario = res.data;
-       window.location.replace('/clientes');    
+       window.location.replace('/');    
       console.log(usuario);   
     });
     
@@ -85,6 +90,7 @@ const ClientesCrear = () => {
         </Button>
         
       </Form>
+     
     </div>
   );
 };

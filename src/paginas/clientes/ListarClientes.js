@@ -31,6 +31,8 @@ const ListarClientes = () => {
       try {
         const response = await axios.get(`${APIHOST}/clientes/buscarPorUsuario/`+ id);
         setListaclientes(response.data);
+        console.log(id);
+        console.log(listaclientes);
       } catch (error) {
         console.error(error);
       }
