@@ -6,8 +6,13 @@ import PrestamosCrear from './PrestamosCrear';
 import  '../../estilos/grid.css'
 import Loading from '../../componentes/Loading';
 import Milink from '../../componentes/Milink';
+import Consultar from '../../componentes/Consultar';
+import { useContext } from 'react';
+import { ContextoUsuario } from '../../componentes/contexto/ContextoUsuario';
+
 
 const ListarPrestamos = () => {
+    const { id } = useContext(ContextoUsuario);
     const [mostrar, setMostrar] = useState(false);
     const [listaprestamos, setListaprestamos ] = useState("");
     const {APIHOST}= app;
@@ -24,7 +29,7 @@ const ListarPrestamos = () => {
     useEffect(() => {
       const fetchPrestamos = async () => {
         try {
-          const response = await axios.get(`${APIHOST}/prestamos`);
+          const response = await axios.get(`${APIHOST}/prestamos/buscarPorUsuario/`+ id);
           setListaprestamos(response.data);
         } catch (error) {
           console.error(error);
@@ -37,12 +42,24 @@ const ListarPrestamos = () => {
   
    if (isLoading) {
     return <div> <Loading /> </div>;
-    }
+   }
 
+   const buscarClientesPorNombre = async (consulta) => {
+    try {
+      const response = await axios.get(`${APIHOST}/prestamos/buscarPorNombre/${consulta}`);
+      setListaprestamos(response.data);
+      console.log(consulta);
+      console.log(listaprestamos);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+ 
   return (
     <div>
       <h3>Prestamos</h3>
-      
+      <Consultar onBuscar={buscarClientesPorNombre}/>
+
       <div id='contenedorBotonAdiciona'>
           <button id='miboton' onClick={() => setMostrar(true)}>Adicionar</button> 
       </div>
